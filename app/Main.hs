@@ -9,12 +9,15 @@ import Haskus.Utils.Variant.Excepts
 
 
 data MyError = MyError String
+  deriving Show
 
 
 main :: IO ()
 main = do
-  void $ runE ex1
-  void $ runE ex2
+  e1 <- runE ex1
+  putStrLn $ show e1
+  e2 <- runE ex2
+  putStrLn $ show e2
   
  where
   ex1 :: MonadIO m => Excepts '[MyError] m ()
